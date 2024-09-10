@@ -17,3 +17,12 @@ filtered_data = data[data['Category'] == category]
 
 # Display filtered data
 st.write(filtered_data)
+
+if 'selected_option' not in st.session_state:
+    st.session_state['selected_option'] = 'Option 1'
+
+selected_option = st.radio('Select an option to update the dropdown:', ['Option 1', 'Option 2'])
+
+st.session_state['selected_option'] = selected_option
+
+option = st.selectbox('Your selection affects this dropdown:', [st.session_state['selected_option'], 'Option 3'], key='dynamic_selectbox')
